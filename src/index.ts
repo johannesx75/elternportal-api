@@ -355,6 +355,17 @@ class ElternPortalApiClient {
     // @ts-ignore
     return rows;
   }
+
+  /** Returns HTML Markup of a page */
+  async getRawContent(endpoint: string) : Promise<string> {
+    const { data } = await this.client.request({
+      method: "GET",
+      url: `https://${this.short}.eltern-portal.org/` + endpoint,
+    });
+    const $ = cheerioLoad(data);
+    return $(`#asam_content`).html() ?? '';
+  }
+
   /** get substitutions */
   async getVertretungsplan(): Promise<VertretungsPlan> {
     const { data } = await this.client.request({

@@ -4,7 +4,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "unbuild"
+    "build": "unbuild",
+    "prepare": "npm run build"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
